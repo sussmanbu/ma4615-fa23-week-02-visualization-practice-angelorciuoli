@@ -36,6 +36,25 @@ covid_data_count |>
 ```
 
 1. Write code for a plot and describe what you observe?
+```{r}
+covid_data_filtered <- covid_data_count %>%
+  filter(state %in% c("MA","FL", "CA"))
+
+ggplot(covid_data_filtered, aes(x = date, y = Cases, color = state)) +
+  geom_line() +
+  labs(x = "Date", y = "Total COVID-19 Cases", title = "Total COVID-19 Cases by State") +
+  theme_minimal()
+```
+The graph above compares the growth of covid cases from April 2020 ~ Februrary 2021 in the states California, Florida, and Massachusetts. What this plot clearly shows California had the most cases, then Florida, and then Massachusetts. It also shows the difference in the growth rate for COVID cases among these three states. 
+
 2. Are there any conclusions you can draw?
+
+The conclusions I am able to draw is California was impacted by COVID-19 the most, then Florida, and then Massachusetts. It also shows that Massachusetts was more successful in mitigating COVID, as the growth rate was significantly less exponential. 
+
 3. What were you not able to do due to not having the R knowledge?
+
+Due to a lack of R knowledge, I was not able to factor in the density of COVID cases. To be more specific, California obviously has a greater population than Florida and Massachusetts so it would be expected for COVID cases to be the greatest there and the plot would be a more accurate representation if it was a graph for the growth of COVID cases per capita rather than total cases.
+
 4. What other data would be useful to better understand this data?
+
+In addition to factoring in weight, would be the number of COVID tests were taken per state. This data point could be factored into the weight in the same manner as population because the more COVID tests that are taken, the more positive cases there are going to be, affecting the total case count and COVID growth rate for each state. 
